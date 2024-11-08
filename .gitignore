@@ -1,0 +1,8 @@
+# Configuration files
+.env
+
+# Go dependencies
+go.sum
+
+# Binary files
+*.exe
