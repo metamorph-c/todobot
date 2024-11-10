@@ -35,10 +35,10 @@ func (mysqlDB *MySQLDatabase) Connect() (*gorm.DB, error) {
 		return nil, fmt.Errorf(failedToCreateDb, err)
 	}
 
-	dsnWithDb := fmt.Sprintf(mysqlDsnWithDb, dsn, mysqlDB)
+	dsnWithDb := fmt.Sprintf(mysqlDsnWithDb, dsn, mysqlDB.Name)
 	return gorm.Open(mysql.Open(dsnWithDb), &gorm.Config{})
 }
 
 func (mysqlDB *MySQLDatabase) AutoMigrate(db *gorm.DB, models ...interface{}) error {
-	return db.AutoMigrate(models)
+	return db.AutoMigrate(models...)
 }
